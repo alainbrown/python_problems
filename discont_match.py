@@ -39,12 +39,11 @@ def discont_match(sub,word):
 			if s == 0: 
 				if s in paths: paths[s] += paths[s]
 				else: paths[s] = 1
-			else:
-				if s-1 in paths and paths[s-1] > 0:
-					if s in paths: paths[s] += paths[s-1]
-					else: paths[s] = 1
+			elif s-1 in paths:
+				if s in paths: paths[s] += paths[s-1]
+				else: paths[s] = 1
 	return paths[len(sub)-1]
 
-print discont_match_dfs("cat", "catapultcatatat") == 21
-print discont_match_bfs("cat", "catapultcatatat") == 21
-print discont_match("cat", "catapultcatatat") == 21
+print discont_match_dfs("cat", "catapult") == 3
+print discont_match_bfs("cat", "catapult") == 3
+print discont_match("cat", "catapult") == 3
