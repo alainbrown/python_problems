@@ -3,12 +3,10 @@ import heapq,sys
 def rearrange(word):
 	count = {}
 	for l in word:	#O(n)
-		if l in count:
-			count[l] -= 1
-		else:
-			count[l] = -1
-	tupes = [ (count[l],l) for l in count]
-	heapq.heapify(tupes) #O(n log n)
+		if l in count: count[l] -= 1
+		else: count[l] = -1
+	tupes = []
+	for l in count: heapq.heappush(tupes,(count[l],l))
 	rword = ''
 	last = ''
 	altupes = []
