@@ -11,7 +11,7 @@
 
 import sys
 
-#O(n*m) complexity, O(n) space for n lists of length m
+#O(n*m) time and O(n) space for n lists of length m
 def smallest_range(arr):
 	current = {}
 	min_range = {}
@@ -40,8 +40,7 @@ def smallest_range(arr):
 			old_range = new_range_max-new_range_min
 
 		# move lowest index
-		if current[small_index]+1 < len(arr[small_index]):
-			current[small_index] += 1
+		if current[small_index]+1 < len(arr[small_index]): current[small_index] += 1
 		#smallest minimum achieved i.e. best solution
 		else: break 
 	
@@ -57,4 +56,4 @@ print smallest_range([
 	[4,10,15,24,26],
 	[0,9,12,20],
 	[5,18,22,30]
-	])
+	]) == (20,24)
