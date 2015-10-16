@@ -11,15 +11,14 @@
 
 import heapq
 
-#O(m*nlogn) time and O(n) space for n lists of length m
+#O(n*klogk) time and O(k) space for k lists of length n
 def smallest_range(arr):
 	current = []
 	range_max = 0
 	for i in xrange(len(arr)): 
 		heapq.heappush(current,(arr[i][0],i,0))
 		range_max = max(arr[i][0], range_max)
-	val,lis,ind = current[0]
-	answer = [val, range_max]
+	answer = [current[0][0], range_max]
 	while True:
 		val,lis,ind = current[0]
 		if (range_max-val) < (answer[1]-answer[0]):	answer = [val, range_max]
