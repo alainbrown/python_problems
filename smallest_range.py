@@ -11,7 +11,7 @@
 
 import heapq
 
-#O(n*m) time and O(n) space for n lists of length m
+#O(m*nlogn) time and O(n) space for n lists of length m
 def smallest_range(arr):
 	current = []
 	range_max = 0
