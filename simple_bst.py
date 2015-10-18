@@ -20,3 +20,18 @@ class Node:
 		else:
 			if self.right is None: return False
 			else: return self.right.search(n)
+
+	def ordered_array(self, arr):
+		if self.left is not None: self.left.ordered_array(arr)
+		arr.append(self.val)
+		if self.right is not None: self.right.ordered_array(arr)
+
+def test(A):
+	root = Node(A[0])
+	for i in xrange(1,len(A)): root.insert(Node(A[i]))
+	print root.search(8)
+	a =[]
+	root.ordered_array(a)
+	print a
+
+test([2, 7, 5, 5, 2, 7, 0, 8, 1])
