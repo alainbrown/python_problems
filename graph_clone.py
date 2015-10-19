@@ -21,11 +21,9 @@ class Graph:
 			new_node = Node(n.val)
 			m[n] = new_node
 			new_nodes.append(new_node)
-		
 		for i in self.nodes:
-			links = []
-			for j in m[i].nodes: links.append(m[j])
-			m[i].nodes = links
+			for j in m[i].nodes: m[i].nodes.append(m[j])
+		return Graph(new_nodes)
 
 a = Node('a')
 b = Node('b')
