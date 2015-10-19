@@ -14,16 +14,13 @@ class Graph:
 	def __init__(self, nodes): 
 		self.nodes = nodes
 
+	# O(e+v) e edges, v vertices
 	def clone(self):
 		m = {}
-		new_nodes = []
-		for n in self.nodes: 
-			new_node = Node(n.val)
-			m[n] = new_node
-			new_nodes.append(new_node)
+		for n in self.nodes: m[n] = Node(n.val)
 		for i in self.nodes:
 			for j in m[i].nodes: m[i].nodes.append(m[j])
-		return Graph(new_nodes)
+		return Graph(m.values())
 
 a = Node('a')
 b = Node('b')
