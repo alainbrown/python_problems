@@ -32,5 +32,5 @@ def sieve_atkin(limit):
         if sieve[p] : P.append(p)
     return P
 
-print sieve_eratosthenes(100)
-# print sieve_atkin(2**16)
+print sieve_eratosthenes(2**16)
+print sieve_atkin(2**16)
