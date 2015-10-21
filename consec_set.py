@@ -36,19 +36,15 @@ def consec_set(N):
 	for i in N:
 		if not visited[i]:
 			large_set = 1
-			p,n=i,i
-			while p and p in visited: 
+			p,n=i-1,i+1
+			while p in visited: 
+				large_set+=1
+				visited[p]=True
 				p-=1
-				if p in visited: 
-					large_set+=1
-					visited[p]=True
-				else: p = None
-			while n and n in visited:
+			while n in visited:
+				large_set+=1
+				visited[n]=True
 				n+=1
-				if n in visited: 
-					large_set+=1
-					visited[n]=True
-				else: n = None
 			if large_set > largest_set: largest_set = large_set
 	return largest_set
 
