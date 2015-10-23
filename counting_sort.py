@@ -1,4 +1,4 @@
-#Space: O(n)
+#Space: O(k) where k = max(n)
 #Complexity: O(n)
 def counting_sort(A):
 	B = [0]*len(A)
