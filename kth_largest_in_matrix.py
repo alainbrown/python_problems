@@ -3,12 +3,14 @@
 # Find the Kth Largest element of the matrix.
 import heapq
 
-# Complexity: O(k)
-# Space: O(N)
+# Complexity: O(klog N) best case O(N logN) worst case
+# Space: O(N) in N*N matrix M
 def kth_largest(M, k):
+	count,N = 0,len(M)
+	if N*N < k: return None
 	h = []
 	for x in xrange(len(M)): heapq.heappush(h, (M[x][0],x,0))
-	N, count, kth_val = len(M), 0, h[0]
+	kth_val = h[0]
 
 	while h and count < k:
 		kth_val,arr_ind,n = heapq.heappop(h)
@@ -20,4 +22,4 @@ m =[[0,5,8],
 	[1,2,3],
 	[5,6,7]]
 
-print kth_largest(m, 6)
+print kth_largest(m, 6) == 5
