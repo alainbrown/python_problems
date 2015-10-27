@@ -8,10 +8,9 @@ import heapq
 def kth_largest(M, k):
 	for a in M:
 		if len(M)!=len(a): raise ValueError('M must be NxN matrix')
-	if k > len(M)**2: raise ValueError('k must not exceed size of M')
-	h = []
+	if k>1 and k > len(M)**2: raise ValueError('Invalid k, must 0 < k < NxN')
+	h,kth_val = [],0
 	for x in xrange(len(M)): heapq.heappush(h, (M[x][0],x,0))
-	kth_val = h[0]
 
 	while h and k>0:
 		kth_val,arr_ind,n = heapq.heappop(h)
