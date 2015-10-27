@@ -3,7 +3,7 @@
 # Find the Kth Largest element of the matrix.
 import heapq
 
-# Complexity: O(k*N log N) in NxN matrix
+# Complexity: O(k log N)
 # Space: O(N)
 def kth_largest(M, k):
 	count,N = 0,len(M)
