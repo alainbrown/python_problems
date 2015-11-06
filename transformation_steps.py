@@ -21,13 +21,10 @@
 # Space: O(n*m) 
 def transformation_steps(words,s,t):
 	#edge cases
-	if len(s) != len(t): return None
-	if s not in words: return None
-	if t not in words: return None
+	if not (len(s) == len(t) and s in words and t in words): return None
 	if s == t: return 0
-	
+
 	g={}
-	jumps = 0
 	for word in words:
 		if len(word) == len(s): #ignore other word lengths
 			for i in xrange(len(word)):
@@ -36,6 +33,7 @@ def transformation_steps(words,s,t):
 				else: g[wild] = [word]
 	visited = set([s])
 	bfs = [s]
+	jumps = 0
 	while t not in visited and bfs:
 		paths = []
 		for parent in bfs:
