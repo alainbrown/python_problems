@@ -28,17 +28,17 @@ def transformation_steps(words,s,t):
 			if wild in g: g[wild].append(word)
 			else: g[wild] = [word]
 	visited = set([s])
-	next = [s]
-	while t not in visited and next:
-		temp = []
-		for word in next:
-			for i in xrange(len(word)):
-				for path in g[word[:i]+'_'+word[i+1:]]:
-					if path not in visited: 
-						temp.append(path)
-						visited.add(path)
-		if not temp and t not in visited: return None
-		next = temp
+	bfs = [s]
+	while t not in visited and bfs:
+		paths = []
+		for parent in bfs:
+			for i in xrange(len(parent)):
+				for word in g[parent[:i]+'_'+parent[i+1:]]:
+					if word not in visited: 
+						paths.append(word)
+						visited.add(word)
+		if not paths and t not in visited: return None
+		bfs = paths
 		jumps+=1
 	return jumps
 
